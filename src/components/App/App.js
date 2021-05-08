@@ -1,10 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
+
+import Preloader from '../Preloader/Preloader'
+import NotFoundPage from '../NotFoundPage/NotFoundPage'
 
 function App() {
   return (
     <div className="app">
-      
+      <NotFoundPage />
     </div>
   );
 }
