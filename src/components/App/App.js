@@ -1,12 +1,11 @@
 import './App.css';
 
-import Preloader from '../Preloader/Preloader'
-import NotFoundPage from '../NotFoundPage/NotFoundPage'
+import Footer from '../Footer/Footer'
 
 function App() {
   return (
     <div className="app">
-      <NotFoundPage />
+      <Footer />
     </div>
   );
 }
