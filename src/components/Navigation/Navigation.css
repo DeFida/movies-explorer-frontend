@@ -11,7 +11,11 @@
   padding: 0;
 }
 
+<<<<<<< HEAD
 .nav__element:nth-child(3) {
+=======
+.nav__element:nth-child(2) {
+>>>>>>> d4b144a62c91f90ecd7a13fabedbb89ad6033210
   margin: 0 50px 0 20px;
 }
 
@@ -71,6 +75,7 @@
   margin: 0 0 0 17px;
 }
 
+<<<<<<< HEAD
 .nav__nav-icon {
   display: none;
 }
@@ -164,6 +169,9 @@
     padding-top: 144px;
     width: 100%;
   }
+=======
+@media screen and (max-width: 767px) {
+>>>>>>> d4b144a62c91f90ecd7a13fabedbb89ad6033210
   .nav__register {
     font-size: 10px;
     margin-right: 14px;
@@ -173,6 +181,7 @@
     padding: 5px 12px;
     font-size: 10px;
   }
+<<<<<<< HEAD
 
   .nav__element:last-child {
     margin: auto 0 200px;
@@ -185,4 +194,6 @@
   .nav__link:last-child {
     font-size: 16px;
   }
+=======
+>>>>>>> d4b144a62c91f90ecd7a13fabedbb89ad6033210
 }

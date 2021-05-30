@@ -19,6 +19,7 @@ function App() {
 
   return (
     <div className="app">
+<<<<<<< HEAD
       {/*  */}
       <Switch>
         <Route path="/" exact>
@@ -48,6 +49,11 @@ function App() {
         </Route>
       </Switch>
 
+=======
+      <Header />
+      <Main />
+      <Footer />
+>>>>>>> d4b144a62c91f90ecd7a13fabedbb89ad6033210
     </div>
   );
 }
