@@ -1,5 +1,5 @@
 .promo {
-    width: 100%;
+    width: 1200px;
     background: #272727;
     border-radius: 10px;
     display: flex;
@@ -29,6 +29,10 @@
 }
 
 @media screen and (max-width: 1279px) {
+    .promo {
+        width: calc(100% - 60px);
+    }
+
     .promo__text {
         font-size: 40px;
         line-height: 52px;
@@ -42,6 +46,10 @@
 }
 
 @media screen and (max-width: 767px) {
+    .promo {
+        width: calc(100% - 20px);
+    }
+
     .promo__text {
         font-size: 29px;
         line-height: 37px;
