@@ -10,7 +10,7 @@ function SearchForm() {
                 <button type="submit" className="searchform__button">Найти</button>
             </div>
 
-            <div class="searchform__switch">
+            <div className="searchform__switch">
                 <input type="checkbox" id="check" />
                 <label htmlFor="check">
                     <span></span>
