@@ -1,5 +1,6 @@
 import './AboutMe.css';
 import ComponentHeadings from '../ComponentHeadings/ComponentHeadings'
+import React from 'react';
 
 
 function AboutMe() {
