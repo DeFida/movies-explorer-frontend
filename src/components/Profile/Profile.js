@@ -90,18 +90,23 @@ function Profile(props) {
         console.log('editing');
 
         setEditing(true)
-        setNameError('Имя не изменился')
-        setEmailError('Email не изменился')
+        setNameError(' ')
+        setEmailError(' ')
         setProfileButtonText('Сохранить')
         setProfileButtonTextRed('Отмена')
 
         if (e.target.classList.contains('profile__button_red')) {
             setEditing(false)
+            setNameError('')
+            setEmailError('')
+            setFormValid(true)
             setProfileButtonText('Редактировать')
             setProfileButtonTextRed('Выйти из аккаунта')
         }
         else {
             if (formValid && (email !== currentUser.email || name !== currentUser.name)) {
+                setEmailError('')
+                setNameError('')
                 props.handleSubmitEditCredentials(name, email).then((res) => {
                     if (res.statusCode !== 400) {
                         setServerError('')
@@ -123,9 +128,7 @@ function Profile(props) {
     }
 
     function logoutHandler() {
-        localStorage.removeItem('jwt')
-        localStorage.removeItem('resultmovies')
-        history.push('/signin')
+        props.logout()
     }
 
     return (

@@ -98,10 +98,13 @@ function Register(props) {
     props.handleSubmitRegister(name, email, password).then((res) => {
       if (res.statusCode !== 400) {
         setServerError('')
-        props.handleSubmitLogin(email, password).then((res) => {
-          if (res.statusCode !== 400) {
-            localStorage.setItem('jwt', res.token);
-            window.location.href = '/movies'
+        
+        props.handleSubmitLogin(email, password).then((rese) => {
+          console.log('sdasd');
+          if (rese.statusCode !== 400) {
+            
+            localStorage.setItem('jwt', rese.token);
+            history.push('/movies')
           }
         })
 

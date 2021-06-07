@@ -53,7 +53,6 @@ function MoviesCard(props) {
     }
     return (
         <div className="movies-card">
-            {console.log(cardState)}
             <div className="movies-card__info-wrapper">
                 <div className="movies-card__text-wrapper">
                     <h2 className="movies-card__name">{card.nameRU}</h2>
@@ -62,7 +61,7 @@ function MoviesCard(props) {
                 <button type="button" onClick={handlerChangeSaveState} className={`movies-card__savestate movies-card__savestate_${cardState}`}></button>
             </div>
             <a href={card.trailerLink} target="_blank" >
-                <img src={location === '/movies' ? `https://api.nomoreparties.co${card.image.url}` : card.image} className="movies-card__preview" alt="moviePreview" />
+                <img src={location === '/movies' ? `https://api.nomoreparties.co${card.image?.url}` : card.image} className="movies-card__preview" alt="moviePreview" />
             </a>
         </div>
     );

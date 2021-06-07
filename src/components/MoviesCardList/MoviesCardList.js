@@ -80,6 +80,7 @@ function MoviesCardList(props) {
     return (
         <div className="allmovies">
             <div className="movies-list">
+                {console.log(currentList)}
                 {Array.from(currentList).map((card, id) => {
                     const neededCard = savedMovies.filter((e) => {if (e.nameRU == card.nameRU) {return e} })
                     let wasSaved = false;

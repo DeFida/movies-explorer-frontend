@@ -8,7 +8,7 @@ import Profile from '../Profile/Profile'
 import Movies from '../Movies/Movies'
 import Login from '../Login/Login'
 import Register from '../Register/Register'
-import { Switch, Route, Redirect } from 'react-router';
+import { Switch, Route, Redirect, useHistory } from 'react-router';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import { register, authorize, editCredentials, getSavedMovies, postAMovie, checkToken, removeMovie } from '../../utils/MainApi'
 import { getMovies } from '../../utils/MoviesApi'
@@ -19,6 +19,8 @@ function App() {
   const [navOpened, setNavOpened] = React.useState(false)
   const [currentUser, setCurrentUser] = React.useState({ loggedIn: false })
   const [loaded, setLoaded] = useState(false)
+
+  let history = useHistory();
 
   React.useEffect(() => {
 
@@ -47,7 +49,15 @@ function App() {
   }
 
   function handleSubmitLogin(email, password) {
-    return authorize(email, password)
+    const ap = authorize(email, password)
+    ap.then((res) => {
+      checkToken(res.token).then((data) => {
+        data.loggedIn = true
+        setCurrentUser(data);
+      })
+        .catch(err => console.log(err))
+    })
+    return ap
   }
 
   function handleSubmitEditCredentials(name, email) {
@@ -76,6 +86,13 @@ function App() {
     return getSavedMovies()
   }
 
+  function logout() {
+    localStorage.removeItem('jwt')
+    localStorage.removeItem('resultmovies')
+    setCurrentUser({loggedIn: false})
+    history.push('/signin')
+  }
+
   return (
     <div className="app">
       {loaded &&
@@ -99,14 +116,14 @@ function App() {
             </Route>
             <Route path="/profile" exact>
               <Header navOpened={navOpened} navHandler={navHandler} />
-              <ProtectedRoute exact path="/profile" loggedIn={currentUser.loggedIn} handleSubmitEditCredentials={handleSubmitEditCredentials} component={Profile} />
+              <ProtectedRoute exact path="/profile" logout={logout} loggedIn={currentUser.loggedIn} handleSubmitEditCredentials={handleSubmitEditCredentials} component={Profile} />
               <Footer />
             </Route>
             <Route path="/signin">
               {!currentUser.loggedIn ? <Login handleSubmitLogin={handleSubmitLogin} /> : <Redirect to="/" />}
             </Route>
             <Route path="/signup">
-              {!currentUser.loggedIn ? <Register handleSubmitRegister={handleSubmitRegister} /> : <Redirect to="/" />}
+              {!currentUser.loggedIn ? <Register handleSubmitRegister={handleSubmitRegister} handleSubmitLogin={handleSubmitLogin} /> : <Redirect to="/" />}
             </Route>
           </Switch>
         </CurrentUserContext.Provider>}
