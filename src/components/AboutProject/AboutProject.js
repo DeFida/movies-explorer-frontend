@@ -1,5 +1,6 @@
 import './AboutProject.css';
 import ComponentHeadings from '../ComponentHeadings/ComponentHeadings'
+import React from 'react';
 
 function AboutProject() {
     return (

@@ -1,4 +1,5 @@
 import './ComponentHeadings.css';
+import React from 'react';
 
 
 function ComponentHeadings(props) {
